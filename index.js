@@ -22,17 +22,29 @@ app.get('/api', (req, res) => {
 app.get('/api/v1/pets', (req, res) => {
     // send the pets array as a response
 
+    //getting all pets array from pets in data.js
+    
+    // function petsName(pet){
+    //     return pet.name
+    // }
+
+    // const nameOfPets = pets.map(petsName)
+
+
+
+    res.send(pets)
 });
 
 // get pet by owner with query string
 app.get('/api/v1/pets/owner', (req, res) => {
-    // get the owner from the request
+    // get the owner from the request  
 
-
+    const owner = req.query.owner
     // find the pet in the pets array
     const pet = pets.find(pet => pet.owner === owner);
 
     // send the pet as a response
+    res.send(pet)
 
 });
 
@@ -41,10 +53,13 @@ app.get('/api/v1/pets/:name', (req, res) => {
     // get the name from the request
 
 
+   const name = req.params.name;
+
     // find the pet in the pets array
     const pet = pets.find(pet => pet.name === name);
 
     // send the pet as a response
+    res.send(pet)
 
 });
 
